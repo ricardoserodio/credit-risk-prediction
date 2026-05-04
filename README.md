@@ -1,6 +1,8 @@
 # Credit Risk Prediction
 
-Machine learning project to predict credit default risk using banking data.
+Machine learning project to predict credit default risk and improve identification of high-risk clients in a banking context.
+
+Focus: Risk Management | Credit Analysis | Banking
 
 ---
 
