@@ -43,6 +43,24 @@ https://colab.research.google.com/github/ricardoserodio/credit-risk-prediction/b
 
 ---
 
+## How to Use
+
+1. Open the notebook in Google Colab
+2. Upload the dataset (`credit_default.csv`) when prompted
+3. Run all cells to train the model, evaluate performance and view feature importance
+
+---
+
+## Use Case
+
+This model can be used by financial institutions to:
+
+* Identify high-risk clients before granting credit
+* Improve credit approval decisions
+* Support risk management and compliance processes
+
+---
+
 ## Files
 
 * `credit_risk_prediction.ipynb` – main notebook
