@@ -144,6 +144,18 @@ The project includes a rule-based decision layer:
 
 ---
 
+## API
+
+This project includes a FastAPI endpoint for real-time credit decision classification.
+
+### Run locally
+
+```bash
+pip install -r requirements.txt
+uvicorn api:app --reload
+
+---
+
 ## Author
 
 Ricardo Serôdio
