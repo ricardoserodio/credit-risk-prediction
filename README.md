@@ -68,6 +68,22 @@ This model can be used by financial institutions to:
 
 ---
 
+
+---
+
+## Decision Engine
+
+The project includes a simple credit decision engine based on predicted default probability:
+
+- Probability < 20%: Approve
+- Probability between 20% and 40%: Review
+- Probability > 40%: Reject
+
+Decision output on the test sample:
+
+- Reject: 3,237 clients
+- Review: 2,027 clients
+- Approve: 736 clients
 ## Author
 
 Ricardo Serôdio
