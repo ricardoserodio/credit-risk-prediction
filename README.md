@@ -78,12 +78,18 @@ The project includes a simple credit decision engine based on predicted default 
 - Probability < 20%: Approve
 - Probability between 20% and 40%: Review
 - Probability > 40%: Reject
+## Model Output
 
-Decision output on the test sample:
+### Credit Decision Distribution
+![Decision Distribution](decision_distribution.png)
 
-- Reject: 3,237 clients
-- Review: 2,027 clients
-- Approve: 736 clients
+### Sample Results
+
+| Probability | Decision | Risk Level |
+|------------|--------|-----------|
+| 0.28       | REVIEW | Medium    |
+| 0.45       | REJECT | High      |
+| 0.09       | APPROVE| Low       |
 ## Author
 
 Ricardo Serôdio
