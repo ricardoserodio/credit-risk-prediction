@@ -14,6 +14,52 @@ The goal is to improve risk detection while supporting practical credit decision
 
 ---
 
+## 🖥️ Web Application
+
+![Web App](web_app.png)
+
+A simple interface that allows users to input a probability of default and instantly receive a credit decision.
+
+---
+
+## ⚙️ API (FastAPI)
+
+![Swagger API](swagger_api.png)
+
+This project includes a FastAPI backend that exposes a real-time decision endpoint.
+
+### Endpoint
+
+POST /predict
+
+### Input
+
+```json
+{
+  "probability": 0.35
+}
+```
+
+### Output
+
+```json
+{
+  "probability": 0.35,
+  "decision": "REVIEW",
+  "risk_level": "Medium"
+}
+```
+
+---
+
+## API Schema
+
+![API Schema](api_schema.png)
+
+The API expects a numeric probability between 0 and 1 and returns a structured decision.
+
+---
+
 ## Key Results
 
 - Accuracy: ~75%
@@ -24,89 +70,54 @@ The goal is to improve risk detection while supporting practical credit decision
 
 ## Business Impact
 
-- Improves identification of high-risk clients, reducing potential credit losses
-- Supports more consistent and data-driven credit decisions
+- Improves identification of high-risk clients, reducing potential credit losses  
+- Supports more consistent and data-driven credit decisions  
 - Enhances client segmentation into actionable risk categories (Low / Medium / High)
 
 ---
 
 ## Model
 
-- Logistic Regression
-- StandardScaler
-- Class imbalance handling (class_weight)
+- Logistic Regression  
+- StandardScaler  
+- Class imbalance handling (`class_weight`)  
 
 ---
 
 ## Key Insights
 
-- Payment history (PAY_0, PAY_2, PAY_3) is the strongest predictor
-- Behavioural variables are more relevant than static financial variables
-- Model significantly improves detection of risky clients
-
----
-
-## Feature Importance
-
-![Feature Importance](feature_importance.png)
+- Payment history (PAY_0, PAY_2, PAY_3) is the strongest predictor  
+- Behavioural variables are more relevant than static financial variables  
+- Model significantly improves detection of risky clients  
 
 ---
 
 ## Dataset
 
-This project uses the **Default of Credit Card Clients** dataset.
+This project uses the **Default of Credit Card Clients dataset**.
 
-**Source (Kaggle):**  
+Source:  
 https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset
 
 ⚠️ The dataset is not included in this repository.
 
-### Dataset Description
+### Includes:
 
-Includes:
-- Demographics (age, gender, education)
-- Credit limits
-- Payment history
-- Billing amounts
-- Previous payments
+- Demographics (age, gender, education)  
+- Credit limits  
+- Payment history  
+- Billing amounts  
+- Previous payments  
 
-Target:
-- `default.payment.next.month`
+### Target:
 
----
-
-## Run the Project
-
-Open in Google Colab:  
-https://colab.research.google.com/github/ricardoserodio/credit-risk-prediction/blob/main/credit_risk_prediction.ipynb
+default.payment.next.month
 
 ---
 
-## How to Use
+## ⚙️ Decision Engine
 
-1. Open the notebook in Google Colab  
-2. Upload the dataset (`credit_default.csv`)  
-3. Run all cells to:
-   - Train the model  
-   - Evaluate performance  
-   - View feature importance  
-   - Generate decisions and risk levels  
-
----
-
-## Use Case
-
-This system can be integrated into financial institutions to:
-
-- Identify high-risk clients before granting credit  
-- Improve credit approval decisions  
-- Support risk management and compliance processes  
-
----
-
-## Decision Engine
-
-The project includes a rule-based decision layer:
+The system converts probabilities into business decisions:
 
 - Probability < 20% → APPROVE (Low Risk)  
 - Probability between 20% and 40% → REVIEW (Medium Risk)  
@@ -114,65 +125,46 @@ The project includes a rule-based decision layer:
 
 ---
 
-## Model Output
+## 📁 Project Structure
 
-### Credit Decision Distribution
-
-![Decision Distribution](decision_distribution.png)
-
-### Decision Output Summary
-
-- Reject: 3,237 clients  
-- Review: 2,027 clients  
-- Approve: 736 clients  
-
-### Sample Results
-
-| Probability | Decision | Risk Level |
-|------------|--------|-----------|
-| 0.28       | REVIEW | Medium    |
-| 0.45       | REJECT | High      |
-| 0.09       | APPROVE | Low      |
+```
+credit_risk_prediction.ipynb
+api.py
+requirements.txt
+feature_importance.png
+decision_distribution.png
+credit_risk_decisions.csv
+```
 
 ---
 
-## Files
+## ▶️ Run the Project
 
-- `credit_risk_prediction.ipynb` – main notebook  
-- `feature_importance.png` – model insights  
-- `decision_distribution.png` – decision visualization  
-- `credit_risk_decisions.csv` – prediction results  
+### 1. Install dependencies
 
----
-## API
-
-This project includes a FastAPI endpoint for real-time credit decision classification.
-
-### Endpoint
-
-**POST /predict**
-
-### Input
-```json
-{
-  "probability": 0.35
-}
-```
-
-### Output
-```json
-{
-  "probability": 0.35,
-  "decision": "REVIEW",
-  "risk_level": "Medium"
-}
-```
-
-### Run locally
 ```bash
 pip install -r requirements.txt
+```
+
+### 2. Run the API
+
+```bash
 uvicorn api:app --reload
 ```
+
+### 3. Open in browser
+
+http://127.0.0.1:8000/docs
+
+---
+
+##  Use Case
+
+This system can be integrated into financial institutions to:
+
+- Identify high-risk clients before granting credit  
+- Improve credit approval decisions  
+- Support risk management and compliance processes  
 
 ---
 
