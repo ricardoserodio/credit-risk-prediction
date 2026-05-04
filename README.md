@@ -3,13 +3,14 @@
 This project simulates a real-world credit risk assessment system used by financial institutions to support lending decisions.
 
 It combines machine learning with a decision engine to classify clients into actionable categories:
+
 - APPROVE (low risk)
 - REVIEW (medium risk)
 - REJECT (high risk)
 
 The goal is to improve risk detection while supporting practical credit decision workflows.
 
-Focus: Risk Management | Credit Analysis | Banking
+**Focus:** Risk Management | Credit Analysis | Banking
 
 ---
 
@@ -31,17 +32,17 @@ Focus: Risk Management | Credit Analysis | Banking
 
 ## Model
 
-- Logistic Regression  
-- StandardScaler  
+- Logistic Regression
+- StandardScaler
 - Class imbalance handling (class_weight)
 
 ---
 
 ## Key Insights
 
-- Payment history (PAY_0, PAY_2, PAY_3) is the strongest predictor  
-- Behavioural variables are more relevant than static financial variables  
-- Model significantly improves detection of risky clients  
+- Payment history (PAY_0, PAY_2, PAY_3) is the strongest predictor
+- Behavioural variables are more relevant than static financial variables
+- Model significantly improves detection of risky clients
 
 ---
 
@@ -55,7 +56,7 @@ Focus: Risk Management | Credit Analysis | Banking
 
 This project uses the **Default of Credit Card Clients** dataset.
 
-- Source (Kaggle):  
+**Source (Kaggle):**  
 https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset
 
 ⚠️ The dataset is not included in this repository.
@@ -131,7 +132,7 @@ The project includes a rule-based decision layer:
 |------------|--------|-----------|
 | 0.28       | REVIEW | Medium    |
 | 0.45       | REJECT | High      |
-| 0.09       | APPROVE | Low       |
+| 0.09       | APPROVE | Low      |
 
 ---
 
@@ -143,16 +144,35 @@ The project includes a rule-based decision layer:
 - `credit_risk_decisions.csv` – prediction results  
 
 ---
-
 ## API
 
 This project includes a FastAPI endpoint for real-time credit decision classification.
 
-### Run locally
+### Endpoint
 
+**POST /predict**
+
+### Input
+```json
+{
+  "probability": 0.35
+}
+```
+
+### Output
+```json
+{
+  "probability": 0.35,
+  "decision": "REVIEW",
+  "risk_level": "Medium"
+}
+```
+
+### Run locally
 ```bash
 pip install -r requirements.txt
 uvicorn api:app --reload
+```
 
 ---
 
